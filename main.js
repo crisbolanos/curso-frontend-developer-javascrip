@@ -3,12 +3,15 @@ const desktopMenu = document.querySelector('.desktop-menu'); //Tomamos la etique
 const mobileMenu = document.querySelector('.mobile-menu'); //Tomamos la etiqueta por su clase
 const menuHamIcon = document.querySelector('.menu'); //Tomamos la etiqueta por su clase para mobil
 const menuCarritoIcon = document.querySelector('.navbar-shopping-cart'); //Tomamos la etiqueta por su clase para mobil
+const productDetailCloseIcon = document.querySelector('.product-detail-close'); //Tomamos la etiqueta por su clase para mobil
 const shopingCartContainer = document.querySelector('#shopingCartContainer'); //Tomamos la etiqueta por su clase para mobil
+const productDetailContainer = document.querySelector('#productDetail'); //Tomamos la etiqueta por su clase para mobil
 const cardsContainer = document.querySelector('.cards-container'); //Tomamos la etiqueta por su clase para mobil
 
 menuEmail.addEventListener('click', toggleDesktopkMenu); // llamamos la fncion al hacer clic
 menuHamIcon.addEventListener('click', toggleMobileMenu); // llamamos la fncion al hacer clic
-menuCarritoIcon.addEventListener('click', toggleCarritoshopingCartContainer); // llamamos la fncion al hacer clic
+menuCarritoIcon.addEventListener('click', toggleCarritoshopingAside); // llamamos la fncion al hacer clic
+productDetailCloseIcon.addEventListener('click', closeProductDetailAside); // llamamos la fncion al hacer clic
 
 function toggleDesktopkMenu() {
 
@@ -24,13 +27,16 @@ function toggleMobileMenu() {
     if (!isshopingCartContainerClosed) {
         shopingCartContainer.classList.add('inactive');
     }
+    closeProductDetailAside();
     mobileMenu.classList.toggle('inactive'); //toggle agrega o quita la clase css segun si la tiene o no
 }
 
-function toggleCarritoshopingCartContainer() {
+function toggleCarritoshopingAside() {
 
     const isMobileMenuClosed = mobileMenu.classList.contains('inactive');
     const isMenuDesktopClosed = desktopMenu.classList.contains('inactive');
+    const isProductDetailClosed = productDetailContainer.classList.contains('inactive');
+    
 
     if (!isMenuDesktopClosed) {
         desktopMenu.classList.add('inactive');
@@ -40,8 +46,25 @@ function toggleCarritoshopingCartContainer() {
     if (!isMobileMenuClosed) {
         mobileMenu.classList.add('inactive');
     }
+
+    if (!isProductDetailClosed) {
+        productDetailContainer.classList.add('inactive');
+    }
+
     shopingCartContainer.classList.toggle('inactive'); //toggle agrega o quita la clase css segun si la tiene o no
 
+   
+
+}
+
+
+function openProductDetailAside (){
+    shopingCartContainer.classList.add('inactive');
+    productDetailContainer.classList.remove('inactive')
+}
+
+function closeProductDetailAside(){
+    productDetailContainer.classList.add('inactive')
 }
 
 const productList = [];
@@ -87,6 +110,8 @@ function renderProducts(arr) {
     
         const productImg = document.createElement('img');
         productImg.setAttribute('src', product.image);
+
+        productImg.addEventListener('click', openProductDetailAside)
     
         const productInfo = document.createElement('div');
         productInfo.classList.add('product-info');
