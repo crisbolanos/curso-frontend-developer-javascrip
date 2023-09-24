@@ -3,31 +3,31 @@ const desktopMenu = document.querySelector('.desktop-menu'); //Tomamos la etique
 const mobileMenu = document.querySelector('.mobile-menu'); //Tomamos la etiqueta por su clase
 const menuHamIcon = document.querySelector('.menu'); //Tomamos la etiqueta por su clase para mobil
 const menuCarritoIcon = document.querySelector('.navbar-shopping-cart'); //Tomamos la etiqueta por su clase para mobil
-const aside = document.querySelector('.product-detail'); //Tomamos la etiqueta por su clase para mobil
+const shopingCartContainer = document.querySelector('#shopingCartContainer'); //Tomamos la etiqueta por su clase para mobil
 const cardsContainer = document.querySelector('.cards-container'); //Tomamos la etiqueta por su clase para mobil
 
 menuEmail.addEventListener('click', toggleDesktopkMenu); // llamamos la fncion al hacer clic
 menuHamIcon.addEventListener('click', toggleMobileMenu); // llamamos la fncion al hacer clic
-menuCarritoIcon.addEventListener('click', toggleCarritoAside); // llamamos la fncion al hacer clic
+menuCarritoIcon.addEventListener('click', toggleCarritoshopingCartContainer); // llamamos la fncion al hacer clic
 
 function toggleDesktopkMenu() {
 
-    const isAsideClosed = aside.classList.contains('inactive');
-    if (!isAsideClosed) {
-        aside.classList.add('inactive');
+    const isshopingCartContainerClosed = shopingCartContainer.classList.contains('inactive');
+    if (!isshopingCartContainerClosed) {
+        shopingCartContainer.classList.add('inactive');
     }
     desktopMenu.classList.toggle('inactive'); //toggle agrega o quita la clase css segun si la tiene o no
 }
 
 function toggleMobileMenu() {
-    const isAsideClosed = aside.classList.contains('inactive');
-    if (!isAsideClosed) {
-        aside.classList.add('inactive');
+    const isshopingCartContainerClosed = shopingCartContainer.classList.contains('inactive');
+    if (!isshopingCartContainerClosed) {
+        shopingCartContainer.classList.add('inactive');
     }
     mobileMenu.classList.toggle('inactive'); //toggle agrega o quita la clase css segun si la tiene o no
 }
 
-function toggleCarritoAside() {
+function toggleCarritoshopingCartContainer() {
 
     const isMobileMenuClosed = mobileMenu.classList.contains('inactive');
     const isMenuDesktopClosed = desktopMenu.classList.contains('inactive');
@@ -40,7 +40,7 @@ function toggleCarritoAside() {
     if (!isMobileMenuClosed) {
         mobileMenu.classList.add('inactive');
     }
-    aside.classList.toggle('inactive'); //toggle agrega o quita la clase css segun si la tiene o no
+    shopingCartContainer.classList.toggle('inactive'); //toggle agrega o quita la clase css segun si la tiene o no
 
 }
 
